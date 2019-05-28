@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Activity</title>
+    <style>
+        #route{
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+    <h1>Dojo Activity Center</h1>
+</div>
+<div id="route">
+    <a href="/home">Home</a> |
+    <a href="/logout">Log Out</a>
+    <hr>
+</div>
+@model Actvty
+<form asp-action="CreateActivity" asp-controller="Home" method="POST">
+    <div class="row">
+        <span asp-validation-for="Title"></span><br>
+        <label asp-for="Title"></label>
+        <input type="text" asp-for="Title">
+    </div>
+    <div class="row">
+        <span asp-validation-for="ActivityDate"></span><br>
+        <label asp-for="ActivityDate"></label>
+        <input asp-for="ActivityDate" id="actDate">
+    </div>
+    <div class="row">
+        <span asp-validation-for="ActDuration"></span><br>
+        <label asp-for="ActDuration"></label>
+        <input type="number" asp-for="ActDuration" placeholder="Number">
+        <select asp-for="ActUnit">
+            <option value="Days">Days</option>
+            <option value="Hours">Hours</option>
+            <option value="Minutes">Minutes</option>
+        </select>
+    </div>
+    <div class="row">
+        <span asp-validation-for="Description"></span><br>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+    </div>
+    <div class="row">
+        <input type="submit" value="Create Activity">
+    </div>
+</form>
+<script>
+    let today = new Date().toISOString().substr(0, 16);
+    document.querySelector("#actDate").value = today;
+</script>
+</body>
+</html>

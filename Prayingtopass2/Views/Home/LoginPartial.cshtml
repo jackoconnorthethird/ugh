@@ -1,0 +1,20 @@
+@model Prayingtopass.Models.LoginUser
+
+<nav>
+    <div class = "login">
+        <h1>Login</h1>
+        <form asp-action = "Login" asp-controller="Home" method="post">
+            <label asp-for="LoginEmail"></label>
+            <input asp-for="LoginEmail"><br><br>
+
+            <label asp-for="LoginPassword"></label>
+            <input asp-for="LoginPassword"><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <div class="validations">
+        <span asp-validation-for="LoginEmail"></span>
+        <span asp-validation-for="LoginPassword"></span>
+    </div>
+</nav>
